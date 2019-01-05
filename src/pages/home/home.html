@@ -11,7 +11,24 @@
   <h3>Willkommen zurück, {{user}}</h3>
 
   <p>
+    Hier hast du eine Übersicht über alle Dinge, die für dich interessant sind.
+  </p>
+
+  <ion-list>
+      <ion-item *ngFor="let item of dashboardItems">
+        <ion-icon name="{{item.icon}}" item-start></ion-icon>
+          {{item.title}}
+          <span *ngIf="item.amount" item-end>{{item.amountDone}}/{{item.amount}}</span>
+      </ion-item>
+    </ion-list>
+
+  <p class="ionic-info">
     If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
+    git branch my-branch<br>
+    git checkout my-branch<br>
+    git add file1.md file2.md (or add -a)<br>
+    git commit -m "my snapshot"<br>
+    git push --set-upstream origin my-branch<br>
   </p>
 
   <button ion-button secondary menuToggle>Toggle Menu</button>
