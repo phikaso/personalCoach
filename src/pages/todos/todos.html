@@ -10,10 +10,10 @@
 <ion-content>
   <ion-list>
     <button ion-item *ngFor="let todo of todos" (click)="itemTapped($event, todo)">
-      <ion-icon [name]="todo.icon" item-start></ion-icon>
-      {{todo.title}}
+      <ion-icon [name]="todo.Icon" item-start></ion-icon>
+      {{todo.Title}}
       <div class="todo-description" item-end>
-        {{todo.description}}
+        {{todo.Description}}
       </div>
     </button>
   </ion-list>
