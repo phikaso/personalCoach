@@ -26,7 +26,9 @@ export class TodosPage {
   }
 
   getTodos(): void {
+    this.todoService.getTodos().subscribe((res)=>{console.log(res);});
     this.todoService.getTodos().subscribe(todos => this.todos = todos);
+    
   }
 
   itemTapped(event, item) {
