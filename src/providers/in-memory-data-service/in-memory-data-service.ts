@@ -1,6 +1,6 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Injectable } from '@angular/core';
-import { Todo } from '../../models/todo.interface';
+import { ITodo } from '../../models/todo.interface';
 
 @Injectable()
 export class InMemoryDataService implements InMemoryDbService{

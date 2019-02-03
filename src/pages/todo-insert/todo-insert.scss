@@ -1,0 +1,23 @@
+page-todo-insert {
+
+    .ng-valid[required], .ng-valid.required  {
+        border-left: 5px solid #42A948; /* green */
+    }
+      
+    .ng-invalid:not(form)  {
+        border-left: 5px solid #a94442; /* red */
+    }
+    .form-group{
+        max-width: 200px;
+        margin-bottom: 5px;
+    }
+    .form-control{
+        width: 100%;
+    }
+    .alert{
+        padding: 2px;
+    }
+    .alert-danger{
+        background-color: red;
+    }
+}
