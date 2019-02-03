@@ -1,4 +1,4 @@
-import { Todo } from './../../models/todo.interface';
+import { ITodo } from './../../models/todo.interface';
 import { DashboardItem } from '../../models/dashboardItem.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { map } from 'rxjs/operator/map';
+import { Todo } from '../../models/todo.class';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,22 +20,21 @@ export class TodosProvider {
   }
 
   private todoUrlOld = 'api/todos';  // URL to web api
-  private baseUrl = 'http://localhost/personalCoachBackend'; ///getTodos.php';
-  todos: Todo[];
+  private baseUrl = 'http://localhost/personalCoachBackend';
+  todos: ITodo[];
 
-  getTodos(): Observable<Todo[]> {
+  getTodos(): Observable<ITodo[]> {
     //this.messageService.add('HeroService: fetched heroes');
     // return this.http.get(this.todoUrl).then(function(response){
     //   console.log(response);
     // })
-    return this.http.get<Todo[]>(this.baseUrl + '/getTodos.php').pipe(catchError(this.handleError('getTodos', [])));
+    return this.http.get<ITodo[]>(this.baseUrl + '/todo.php').pipe(catchError(this.handleError('getTodos', [])));
   }
 
-  get_todos(){
-    this.http.get(this.baseUrl + '/getTodos.php').subscribe((res)=>{
-        console.log(res);
-    });
-}
+  insertTodo(todo: ITodo): Observable<ITodo>{
+    //return this.http.get<ITodo[]>(this.baseUrl + '/todo.php').pipe(catchError(this.handleError('getTodos', [])));
+    return this.http.post<ITodo>(this.baseUrl + '/todo.php', todo , httpOptions);//.pipe(catchError(this.handleError('addTodo', todo)));
+  }
 
 
   private handleError<T> (operation = 'operation', result?: T) {

@@ -1,7 +1,8 @@
+import { TodoInsertPage } from './../todo-insert/todo-insert';
 import { TodosProvider } from './../../providers/todos/todos-service';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Todo } from '../../models/todo.interface';
+import { ITodo } from '../../models/todo.interface';
 
 @Component({
   selector: 'page-todos',
@@ -9,9 +10,9 @@ import { Todo } from '../../models/todo.interface';
 })
 
 export class TodosPage {
-  selectedTodo: any;
+  selectedTodo: ITodo;
   icons: string[];
-  todos: Array<Todo>;
+  todos: Array<ITodo>;
 
   constructor(private navCtrl: NavController, private navParams: NavParams, private todoService: TodosProvider) {
     // If we navigated to this page, we will have an item available as a nav param
@@ -26,9 +27,13 @@ export class TodosPage {
   }
 
   getTodos(): void {
-    this.todoService.getTodos().subscribe((res)=>{console.log(res);});
+    this.todoService.getTodos().subscribe(todos=>{console.log(todos);});
     this.todoService.getTodos().subscribe(todos => this.todos = todos);
     
+  }
+
+  navigateToInsertTodo(event): void{
+    this.navCtrl.push(TodoInsertPage);
   }
 
   itemTapped(event, item) {

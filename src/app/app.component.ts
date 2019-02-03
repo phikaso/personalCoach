@@ -1,3 +1,4 @@
+import { TodoInsertPage } from './../pages/todo-insert/todo-insert';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -12,7 +13,7 @@ import { TodosPage } from '../pages/todos/todos';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = TodoInsertPage;// HomePage;
 
   pages: Array<{title: string, component: any}>;
 

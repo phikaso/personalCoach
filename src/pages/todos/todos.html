@@ -18,6 +18,7 @@
     </button>
   </ion-list>
   <div *ngIf="selectedTodo" padding>
-    You navigated here from <b>{{selectedTodo.title}}</b>
+    You navigated here from <b>{{selectedTodo.Title}}</b>
   </div>
+  <button ion-button (click)="navigateToInsertTodo($event)">+</button>
 </ion-content>

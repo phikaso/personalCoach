@@ -6,6 +6,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TodosPage } from '../pages/todos/todos';
+import { TodoInsertPage } from '../pages/todo-insert/todo-insert';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -14,11 +15,13 @@ import { InMemoryDataService } from '../providers/in-memory-data-service/in-memo
 import { HttpClientModule } from '@angular/common/http';
 import { TodosProvider } from '../providers/todos/todos-service';
 
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    TodosPage
+    TodosPage,
+    TodoInsertPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { TodosProvider } from '../providers/todos/todos-service';
   entryComponents: [
     MyApp,
     HomePage,
-    TodosPage
+    TodosPage,
+    TodoInsertPage
   ],
   providers: [
     StatusBar,
