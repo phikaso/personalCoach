@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Todo } from '../../models/todo.class';
 import { TodosProvider } from '../../providers/todos/todos-service';
+import { TodosPage } from '../todos/todos';
 
 /**
  * Generated class for the TodoInsertPage page.
@@ -30,7 +31,13 @@ export class TodoInsertPage {
 
   insertTodo(todo: Todo){
     console.log(todo);
-    this.todoService.insertTodo(todo).subscribe(r=>{});;
+    if(!this.todo.Deadline){
+      let date = new Date(this.todo.Deadline);
+      this.todo.Deadline = date;
+      console.log(date);
+    }
+    this.todoService.insertTodo(todo).subscribe(r=>{});
+    this.navCtrl.pop()//push(TodosPage);
   }
 
 }

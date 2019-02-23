@@ -13,7 +13,7 @@ import { TodosPage } from '../pages/todos/todos';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = TodoInsertPage;// HomePage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 

@@ -3,6 +3,7 @@ import { TodosProvider } from './../../providers/todos/todos-service';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ITodo } from '../../models/todo.interface';
+import { TodoDetailPage } from '../todo-detail/todo-detail';
 
 @Component({
   selector: 'page-todos',
@@ -22,24 +23,22 @@ export class TodosPage {
 
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.getTodos();
   }
 
   getTodos(): void {
     this.todoService.getTodos().subscribe(todos=>{console.log(todos);});
-    this.todoService.getTodos().subscribe(todos => this.todos = todos);
-    
+    this.todoService.getTodos().subscribe(todos => this.todos = todos);    
   }
 
   navigateToInsertTodo(event): void{
     this.navCtrl.push(TodoInsertPage);
   }
 
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push(TodosPage, {
-      item: item
+  navigateToDetailTodo(event, todo: ITodo) : void{
+    this.navCtrl.push(TodoDetailPage, {
+      todoID: ""+ todo.TodoID
     });
   }
 }
