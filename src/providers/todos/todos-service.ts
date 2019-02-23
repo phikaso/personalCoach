@@ -1,9 +1,9 @@
 import { ITodo } from './../../models/todo.interface';
 import { DashboardItem } from '../../models/dashboardItem.interface';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, first } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { map } from 'rxjs/operator/map';
 import { Todo } from '../../models/todo.class';
@@ -34,6 +34,11 @@ export class TodosProvider {
   insertTodo(todo: ITodo): Observable<ITodo>{
     //return this.http.get<ITodo[]>(this.baseUrl + '/todo.php').pipe(catchError(this.handleError('getTodos', [])));
     return this.http.post<ITodo>(this.baseUrl + '/todo.php', todo , httpOptions);//.pipe(catchError(this.handleError('addTodo', todo)));
+  }
+
+  getTodo(todoID: string): Observable<Todo> {
+    let params = new HttpParams().set("TodoID", todoID); //Create new HttpParams
+    return this.http.get<Todo>(this.baseUrl + '/todo.php', {params});//.map(this.extractData).mergeMap(processArray => { return processArray.filter(x=> todo === "")}).first();//.pipe(catchError(this.handleError('getTodo', [])));
   }
 
 

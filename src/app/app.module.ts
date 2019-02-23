@@ -14,6 +14,7 @@ import { DashboardProvider } from '../providers/dashboard/dashboardService';
 import { InMemoryDataService } from '../providers/in-memory-data-service/in-memory-data-service';
 import { HttpClientModule } from '@angular/common/http';
 import { TodosProvider } from '../providers/todos/todos-service';
+import { TodoDetailPage } from '../pages/todo-detail/todo-detail';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { TodosProvider } from '../providers/todos/todos-service';
     MyApp,
     HomePage,
     TodosPage,
-    TodoInsertPage
+    TodoInsertPage,
+    TodoDetailPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { TodosProvider } from '../providers/todos/todos-service';
     MyApp,
     HomePage,
     TodosPage,
-    TodoInsertPage
+    TodoInsertPage,
+    TodoDetailPage
   ],
   providers: [
     StatusBar,
