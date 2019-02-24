@@ -1,3 +1,9 @@
 page-todo-detail {
-
+    input[readonly]{
+        background-color: lightgray;
+        cursor: not-allowed;
+    }
+    .btn-danger{
+        background-color: red;
+    }
 }

@@ -7,6 +7,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TodosPage } from '../pages/todos/todos';
 import { TodoInsertPage } from '../pages/todo-insert/todo-insert';
+import { DatePipe } from '@angular/common'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -53,7 +54,8 @@ import { TodoDetailPage } from '../pages/todo-detail/todo-detail';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DashboardProvider,
     InMemoryDataService,
-    TodosProvider
+    TodosProvider,
+    DatePipe
   ]
 })
 export class AppModule {}

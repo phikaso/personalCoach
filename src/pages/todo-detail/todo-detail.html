@@ -10,13 +10,49 @@
 
 
 <ion-content padding>
-  <div>
-    {{todo.Title}}
-  </div>
-  <!-- <ion-list *ngFor="let todo of todos">
-    <ion-item>
-
-    </ion-item>
-  </ion-list> -->
-
-</ion-content>
+    <div>
+      <form (ngSubmit)="editTodo(todo)" #todoEdit="ngForm">
+        <div class="form-group">
+            <label for="todoId">TodoID*</label>
+            <div class="form-group-input">
+              <input type="number" class="form-control" name="todoId" id="todoId" [(ngModel)]="todo.TodoID" #todoId="ngModel" required readonly>
+            </div>
+          </div>
+        <div class="form-group">
+          <label for="title">Titel*</label>
+          <div class="form-group-input">
+            <input type="text" class="form-control" name="title" id="title" [(ngModel)]="todo.Title" required minlength="3" #title="ngModel">
+            <div [hidden]="title.valid || !title.touched" class="alert alert-danger">Titel wird benötigt</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="description">Beschreibung*</label>
+          <div>
+            <input type="textarea" class="form-control" name="description" id="description" [(ngModel)]="todo.Description" required minlength="3" #description="ngModel"/>
+            <div [hidden]="description.valid || !description.touched" class="alert alert-danger">Beschreibung wird benötigt</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="prio">Prio</label>
+          <div>
+            <input type="number" class="form-control" name="prio" id="prio" [(ngModel)]="todo.Prio" #prio="ngModel"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="deadline">Deadline</label>
+          <div>
+            <input type="datetime-local" class="form-control" name="deadline" id="deadline" [(ngModel)]="date" #deadline="ngModel"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="icon">Icon</label>
+          <div>
+            <input type="text" class="form-control" name="icon" id="icon" [(ngModel)]="todo.Icon" #icon="ngModel"/>
+            <span class="tooltip">(Siehe: <a target="blanc" href="https://ionicons.com/">https://ionicons.com/</a>)</span>
+          </div>
+        </div>
+        <button ion-button type="submit" class="btn btn-success" [disabled]="!todoEdit.form.valid">Speichern und schließen</button>
+      </form>
+      <button ion-button type="button" class="btn btn-danger" (click)="deleteTodo()">Löschen</button>
+    </div>
+  </ion-content>
