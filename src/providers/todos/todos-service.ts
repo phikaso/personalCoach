@@ -19,7 +19,6 @@ export class TodosProvider {
     console.log('Hello TodosProvider Provider');
   }
 
-  private todoUrlOld = 'api/todos';  // URL to web api
   private baseUrl = 'http://localhost/personalCoachBackend';
   todos: ITodo[];
 
@@ -36,9 +35,18 @@ export class TodosProvider {
     return this.http.post<ITodo>(this.baseUrl + '/todo.php', todo , httpOptions);//.pipe(catchError(this.handleError('addTodo', todo)));
   }
 
+  editTodo(todo: ITodo): Observable<ITodo>{
+    return this.http.put<ITodo>(this.baseUrl + '/todo.php', todo , httpOptions);
+  }
+
   getTodo(todoID: string): Observable<Todo> {
     let params = new HttpParams().set("TodoID", todoID); //Create new HttpParams
     return this.http.get<Todo>(this.baseUrl + '/todo.php', {params});//.map(this.extractData).mergeMap(processArray => { return processArray.filter(x=> todo === "")}).first();//.pipe(catchError(this.handleError('getTodo', [])));
+  }
+
+  deleteTodo(todoID: string): Observable<Todo>{
+    let params = new HttpParams().set("TodoID", todoID);
+    return this.http.delete<Todo>(this.baseUrl + '/todo.php', {params});
   }
 
 
