@@ -55,7 +55,7 @@ import { TodoDetailPage } from '../pages/todo-detail/todo-detail';
     DashboardProvider,
     InMemoryDataService,
     TodosProvider,
-    DatePipe
+    DatePipe,
   ]
 })
 export class AppModule {}
