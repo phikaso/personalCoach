@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, first } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
-import { map } from 'rxjs/operator/map';
 import { Todo } from '../../models/todo.class';
 
 const httpOptions = {
@@ -19,7 +18,8 @@ export class TodosProvider {
     console.log('Hello TodosProvider Provider');
   }
 
-  private baseUrl = 'http://localhost/personalCoachBackend';
+  private baseUrl1 = 'http://localhost/personalCoachBackend';
+  private baseUrl = 'http://192.168.0.101/personalCoachBackend';
   todos: ITodo[];
 
   getTodos(): Observable<ITodo[]> {

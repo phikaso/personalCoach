@@ -1,5 +1,7 @@
 {
   "name": "personalCoach",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

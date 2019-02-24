@@ -24,10 +24,9 @@ export class TodoDetailPage implements OnInit{
   ngOnInit(): void {
     this.todoService.getTodo(this.todoID).subscribe(todo => {
       this.todo = todo[0];
-      if(this.todo.Deadline == null){
+      if(this.todo.Deadline != null && this.todo.Deadline.toString() != '0000-00-00 00:00:00'){
         this.date = this.datepipe.transform(this.todo.Deadline, 'yyyy-MM-ddTHH:mm');
-      }
-      
+      }      
     });
   }
 
